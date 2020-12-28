@@ -59,13 +59,16 @@
 
         for (i = 0; i < 5; i++) {
             const computerSelection = computerPlay();
+            const playerSelection = prompt("Choose rock, paper, or scissors.");
             console.log(`GAME ${i}\n` + playRound(playerSelection, computerSelection));
         }
 
         if (playerScore > computerScore) {
             console.log("\n\nPlayer Wins!");
-        } else {
+        } else if (playerScore < computerScore) {
             console.log("\n\nComputer Wins!");
+        } else {
+            console.log("\n\nTie!rock")
         }
     </script>
     
