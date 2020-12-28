@@ -8,6 +8,25 @@
 
     <script>
         
+        let choices = ["rock", "paper", "scissors"];
+
+        function computerPlay() {
+            computerSelection = choices[Math.floor(Math.random() * 3)];
+        };
+        
+        function playRound(playerSelection, computerSelection) {
+
+        playerSelection.toLowerCase();
+        let didYouWin = undefined;
+
+        switch (true)
+            case computerSelection == playerSelection:
+                console.log("Tie!")
+                break;
+            case computerSelection == "rock" && playerSelection == "scissors"
+            //continue writing switch statement for each case
+
+        }
     </script>
     
 </body>
