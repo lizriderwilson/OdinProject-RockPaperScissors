@@ -9,9 +9,12 @@
     <script>
         
         let choices = ["rock", "paper", "scissors"];
+        
+        playerScore = 0;
+        computerScore = 0;
 
         function computerPlay() {
-            computerSelection = choices[Math.floor(Math.random() * 3)];
+            return choices[Math.floor(Math.random() * 3)];
         };
         
         function playRound(playerSelection, computerSelection) {
@@ -19,13 +22,50 @@
         playerSelection.toLowerCase();
         let didYouWin = undefined;
 
-        switch (true)
+        switch (true) {
             case computerSelection == playerSelection:
-                console.log("Tie!")
+                return `Tie\nScore:\nPlayer - ${playerScore}\nComputer - ${computerScore}`;
                 break;
-            case computerSelection == "rock" && playerSelection == "scissors"
-            //continue writing switch statement for each case
+            case computerSelection == "rock" && playerSelection == "scissors":
+                didYouWin = false;
+                break;
+            case computerSelection == "rock" && playerSelection == "paper":
+                didYouWin = true;
+                break;
+            case computerSelection == "paper" && playerSelection == "rock":
+                didYouWin = false;
+                break;
+            case computerSelection == "paper" && playerSelection == "scissors":
+                didYouWin = true;
+                break;
+            case computerSelection == "scissors" && playerSelection == "paper":
+                didYouWin = false;
+                break;
+            case computerSelection == "scissors" && playerSelection == "rock":
+                didYouWin = true;
+            }
 
+        if (didYouWin == true) {
+            playerScore++;
+            return `You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.\nScore:\nPlayer - ${playerScore}\nComputer - ${computerScore}`
+            } else {
+            computerScore++;
+            return `You lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.\nScore:\nPlayer - ${playerScore}\nComputer - ${computerScore}`
+            }
+
+        }
+
+        const playerSelection = "rock";
+
+        for (i = 0; i < 5; i++) {
+            const computerSelection = computerPlay();
+            console.log(`GAME ${i}\n` + playRound(playerSelection, computerSelection));
+        }
+
+        if (playerScore > computerScore) {
+            console.log("\n\nPlayer Wins!");
+        } else {
+            console.log("\n\nComputer Wins!");
         }
     </script>
     
